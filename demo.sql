@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Nov-2016 às 10:50
+-- Generation Time: 18-Nov-2016 às 10:21
 -- Versão do servidor: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -31,16 +31,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `nome` varchar(255) NOT NULL,
   `login` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `funcionario`
---
-
-INSERT INTO `funcionario` (`id`, `nome`, `login`, `senha`) VALUES
-(1, 'Ademar Perfoll Junior', 'junior', 'abc'),
-(2, 'Alberto', 'alberto', '321'),
-(3, 'Pesadao', 'pesadao', '123');
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -53,21 +44,6 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `descricao` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `marca`
---
-
-INSERT INTO `marca` (`id`, `descricao`) VALUES
-(1, 'teste'),
-(4, 'VW'),
-(5, 'Renault'),
-(6, 'GM'),
-(7, 'Fiat'),
-(9, 'Peugeot'),
-(11, 'Teste1'),
-(12, 'ttest1'),
-(14, 'asdsadasd');
-
 -- --------------------------------------------------------
 
 --
@@ -79,8 +55,9 @@ CREATE TABLE IF NOT EXISTS `veiculo` (
   `marca_id` int(11) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `preco` decimal(10,2) NOT NULL,
-  `imagem` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `imagem` text NOT NULL,
+  `destaque` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -112,7 +89,7 @@ ALTER TABLE `veiculo`
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `marca`
 --
@@ -122,7 +99,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT for table `veiculo`
 --
 ALTER TABLE `veiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
