@@ -45,7 +45,13 @@ $atualizar = $DaoVeiculo->getVeiculo($id);
         <br/>
         <br/>
         <label>Nova Imagem:</label>
-        <input type="file" name="imagem" required />
+        <input type="file" name="imagem" />
+        <br/>
+        <label>Destaque:</label>
+        <select name="destaque">
+            <option value="0" <?= ($atualizar["destaque"]==0)?"selected":""; ?>>Não</option>
+            <option value="1" <?= ($atualizar["destaque"]==1)?"selected":""; ?>>Sim</option>
+        </select>
         <br/>
         <input type="submit" name="botao" value="Confirmar"/>    
     </form>
@@ -59,9 +65,10 @@ if (isset($_POST["botao"])) {
     $veiculo->setDescricao($_POST["descricao"]);
     $veiculo->setMarca($_POST["marca"]);
     $veiculo->setPreco($_POST["preco"]);    
+    $veiculo->setDestaque($_POST["destaque"]);    
 
     /*     * *upload de imagem* */
-    if ($atualizar["imagem"] != $_FILES["imagem"]["name"]) {        
+    if ($atualizar["imagem"] != $_FILES["imagem"]["name"] && !empty($_FILES["imagem"]["name"])) {        
         $pastaDestino = "fotos/";
         $arquivoDestino = $pastaDestino . basename($_FILES["imagem"]["name"]);
         //apaga imagem atual para trocar pela nova

@@ -18,6 +18,7 @@ class Veiculo {
     private $marca;
     private $preco;
     private $imagem;
+    private $destaque;
     
     function getId() {
         return $this->id;
@@ -58,6 +59,16 @@ class Veiculo {
     function setImagem($imagem) {
         $this->imagem = $imagem;
     }
+    
+    function getDestaque() {
+        return $this->destaque;
+    }
+
+    function setDestaque($destaque) {
+        $this->destaque = $destaque;
+    }
+
+
 
 
 }

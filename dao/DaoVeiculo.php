@@ -23,17 +23,20 @@ class DaoVeiculo {
                     . " (descricao,"
                     . " marca_id,"
                     . " preco,"
-                    . " imagem) "
+                    . " imagem,"
+                    . " destaque) "
                     . " VALUES "
                     . " (:descricao,"
                     . " :marca_id,"
                     . " :preco,"
-                    . " :imagem)";
+                    . " :imagem,"
+                    . " :destaque)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":descricao", $veiculo->getDescricao());
             $p_sql->bindValue(":marca_id", $veiculo->getMarca());
             $p_sql->bindValue(":preco", $veiculo->getPreco());
             $p_sql->bindValue(":imagem", $veiculo->getImagem());
+            $p_sql->bindValue(":destaque", $veiculo->getDestaque());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();
@@ -44,6 +47,7 @@ class DaoVeiculo {
         $sql = "SELECT veiculo.id,"
                 . " veiculo.descricao,"
                 . " veiculo.preco,"
+                . " veiculo.destaque,"
                 . " veiculo.imagem,"
                 . " marca.descricao as marca"
                 . " FROM veiculo, marca"
@@ -88,7 +92,7 @@ class DaoVeiculo {
 
     public function atualizar(Veiculo $veiculo) {
         try {
-            $sql = "UPDATE veiculo set descricao =:descricao, preco=:preco, marca_id=:marca,imagem=:imagem"
+            $sql = "UPDATE veiculo set descricao =:descricao, preco=:preco, marca_id=:marca,imagem=:imagem,destaque=:destaque"
                     . " WHERE id=:id";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $veiculo->getId());
@@ -96,6 +100,7 @@ class DaoVeiculo {
             $p_sql->bindValue(":preco", $veiculo->getPreco());
             $p_sql->bindValue(":marca", $veiculo->getMarca());
             $p_sql->bindValue(":imagem", $veiculo->getImagem());
+            $p_sql->bindValue(":destaque", $veiculo->getDestaque());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();

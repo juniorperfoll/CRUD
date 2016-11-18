@@ -20,6 +20,7 @@ $dados = $DaoVeiculo->listar();
         <th>Marca</th>
         <th>Preço</th>
         <th>Imagem</th>
+        <th>Destaque</th>
         <th>Ações</th>
     </tr>
     <?php
@@ -31,6 +32,8 @@ $dados = $DaoVeiculo->listar();
         echo "<td>" . $row["marca"] . "</td>";
         echo "<td>" . $row["preco"] . "</td>";
         echo "<td><img src='fotos/{$row["imagem"]}'/></td>";
+        $destaque = ($row["destaque"]==1)?"Sim":"Não";
+        echo "<td>" . $destaque . "</td>";
         echo "<td><a href='?pg=editVeiculo&id=$id' title='Editar'><i class='fa fa-pencil fa-lg'></i></a>"
         . " <a href='?pg=delVeiculo&id=$id' title='Excluir' onclick='return confirm(\"Deseja excluir?\")'><i class='fa fa-trash fa-lg'></i></a></td>";
         echo "</tr>";

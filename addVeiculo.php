@@ -32,6 +32,12 @@
         <label>Imagem:</label>
         <input type="file" name="imagem" required/>
         <br/>
+        <label>Destaque:</label>
+        <select name="destaque">
+            <option value="0" selected>Não</option>
+            <option value="1">Sim</option>
+        </select>
+        <br/>
         <input type="submit" name="botao" value="Confirmar"/>    
     </form>
 </div>
@@ -44,6 +50,7 @@ if (isset($_POST["botao"])) {
     $veiculo->setMarca($_POST["marca"]);
     $veiculo->setPreco($_POST["preco"]);
     $veiculo->setImagem($_FILES["imagem"]["name"]);
+    $veiculo->setDestaque($_POST["destaque"]);
     
     /***upload de imagem**/
     $pastaDestino = "fotos/";
